@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import { Provider } from 'react-redux'
 import './App.css';
 import {createStore} from 'redux'
-import HelloWorld from './containers/HelloWorld.js'
+import AddTodoContainer from './containers/addTodoContainer.js'
+import FooterContainer from './containers/footerContainer.js'
+import TodoListContainer from './containers/todoListContainer.js'
 import combReducer from './reducers/reducer.js'
 
 var store = createStore(combReducer)
@@ -16,7 +18,9 @@ class App extends Component {
               <div className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <h2>Simple TO DO App</h2>
-                <AddTodo />
+                <AddTodoContainer />
+                <TodoListContainer/>
+                <FooterContainer/>
               </div>
 
 

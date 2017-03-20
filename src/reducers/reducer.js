@@ -1,13 +1,20 @@
-import { ADD_TODO } from './../constants/constants.js'
+import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER } from './../constants/constants.js'
 import { combineReducers } from 'redux'
 
-const helloWorldReducer = (state={message: 0}, action) => {
+const todoReducer = (state=[], action) => {
   switch(action.type){
 
-    case PLUS:
-      console.log('PLUS reducer')
-      return Object.assign({}, state, { message: state.message + 1 })
+    case ADD_TODO:
+      console.log('add todo reducer')
+      return [...state, { text: action.text, completed: false, id: action.id }]
 
+    case SET_VISIBILITY_FILTER:
+      console.log('set visibility filter reducer')
+      return [...state, { currentFilter: action.filter }]
+
+    case TOGGLE_TODO:
+      console.log('Toggle todo reducer')
+      return [...state, {completed: ! state.completed}]
 
     default:
       console.log('default reducer')
@@ -15,7 +22,7 @@ const helloWorldReducer = (state={message: 0}, action) => {
   }
 }
 const combReducer = combineReducers({
-  helloWorldReducer,
+  todoReducer,
 })
 
 export default combReducer
